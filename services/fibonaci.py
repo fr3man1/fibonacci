@@ -57,10 +57,13 @@ def handle_invalid_usage(error):
 
 @app.route("/fib/<nth>", methods=['GET'])
 def fib(nth):
-    if int(nth) >= 0:
-        return str(fib_array(int(nth)))
-    raise InvalidUsage('Invalid usage', status_code=400)
-    # return flask.jsonify({'message': e.message}), 400
+    try:
+        if int(nth) >= 0:
+            return str(fib_array(int(nth)))
+        elif int(nth) < 0:
+            raise InvalidUsage('Invalid usage, number cannot be negative', status_code=400)
+    except ValueError:
+        raise InvalidUsage('Invalid usage', status_code=400)
 
 
 if __name__ == "__main__":
