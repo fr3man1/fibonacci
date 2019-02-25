@@ -1,5 +1,5 @@
 # Microservices Project Make File
-# author: umer mansoor
+# author: Andrius Čekanauskas
 
 VIRTUALENV = $(shell which virtualenv)
 
